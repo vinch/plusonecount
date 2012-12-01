@@ -2,7 +2,7 @@ var http = require('http');
 var url = require('url');
 var jsdom = require('jsdom');
 
-http.createServer(function(request, response) {
+var app = http.createServer(function(request, response) {
 
   var pu = url.parse(request.url, true);
 
@@ -39,6 +39,9 @@ http.createServer(function(request, response) {
     response.end();
   }
 
-}).listen(51441, function() {
-  console.log('Proxy server started and listening on port 51441');
+});
+
+var port = process.env.PORT || 3737;
+app.listen(port, function() {
+  console.log('Proxy server started and listening on port ' + port);
 });
